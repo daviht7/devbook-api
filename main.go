@@ -9,13 +9,8 @@ import (
 )
 
 func main() {
-
 	config.Carregar()
-
-	fmt.Printf("Rodando API na PORTA %d...", config.Porta)
-
 	r := router.Gerar()
-
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Porta), r))
-
+	fmt.Printf("Rodando API na PORTA %d...", config.Porta)
 }
