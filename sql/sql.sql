@@ -3,6 +3,8 @@ USE devbook;
 
 DROP TABLE IF EXISTS usuarios;
 
+DROP TABLE IF EXISTS seguidores;
+
 CREATE TABLE usuarios (
 	id int auto_increment primary key,
 	nome varchar(50) not null,
@@ -11,3 +13,12 @@ CREATE TABLE usuarios (
 	senha varchar(100) not null,
 	criadoEm timestamp default CURRENT_TIMESTAMP()
 ) ENGINE=INNODB;
+
+
+CREATE TABLE seguidores (
+	usuario_id int not null,
+	seguidor_id int not null,
+	FOREIGN KEY(usuario_id) references usuarios(id) ON DELETE CASCADE,
+	FOREIGN KEY(seguidor_id) references usuarios(id) ON DELETE CASCADE,
+	PRIMARY KEY(usuario_id,seguidor_id)
+) ENGINE=INNODB
