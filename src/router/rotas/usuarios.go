@@ -55,4 +55,10 @@ var rotasUsuarios = []Rota{
 		Funcao:             controller.BuscarSeguidores,
 		RequerAutenticacao: true,
 	},
+	{
+		URI:                "/usuarios/{usuarioId}/seguindo",
+		Metodo:             http.MethodGet,
+		Funcao:             controller.BuscarSeguindo,
+		RequerAutenticacao: true,
+	},
 }
