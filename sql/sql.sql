@@ -1,8 +1,8 @@
 CREATE DATABASE IF NOT EXISTS devbook;
 USE devbook;
 
+DROP TABLE IF EXISTS publicacoes;
 DROP TABLE IF EXISTS usuarios;
-
 DROP TABLE IF EXISTS seguidores;
 
 CREATE TABLE usuarios (
@@ -21,4 +21,14 @@ CREATE TABLE seguidores (
 	FOREIGN KEY(usuario_id) references usuarios(id) ON DELETE CASCADE,
 	FOREIGN KEY(seguidor_id) references usuarios(id) ON DELETE CASCADE,
 	PRIMARY KEY(usuario_id,seguidor_id)
+) ENGINE=INNODB
+
+CREATE TABLE publicacoes (
+	id int auto_increment primary key,
+	titulo varchar(50) not null,
+	conteudo varchar(300) not null,
+	autor_id int not null,
+	FOREIGN KEY(autor_id) references usuarios(id) ON DELETE CASCADE,
+	curtidas int default 0,
+	criadaEm timestamp default current_timestamp
 ) ENGINE=INNODB
